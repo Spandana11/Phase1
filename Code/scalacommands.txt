@@ -1,0 +1,5 @@
+scala> val inputFile =sc.textFile("HDFS input Filepath")
+scala> val wordCount =inputFile.flatMap(line=>line.split(" ")).map(word => (word,1)).reduceByKey(_+_)
+scala> wordCount.toDebugString
+scala> wordCount.cache()
+scala> wordCount.saveAsTextFile("HDFS output Folder path")
